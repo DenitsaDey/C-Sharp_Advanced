@@ -60,7 +60,11 @@ namespace Parking
 
         public string GetStatistics()
         {
-            return $"The cars are parked in {this.Type}: {Environment.NewLine}{string.Join(Environment.NewLine, data)}";
+            var sb = new StringBuilder();
+            sb.AppendLine($"The cars are parked in {Type}:");
+            data.ForEach(c => sb.AppendLine(c.ToString()));
+
+            return sb.ToString().TrimEnd();
         }
     }
 }
